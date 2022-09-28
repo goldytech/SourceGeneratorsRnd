@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGenerator.Attributes", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloLib", "HelloLib\HelloLib.csproj", "{94E065B8-0D63-4E82-99E8-057C75FEA706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorConsumer", "GeneratorConsumer\GeneratorConsumer.csproj", "{84AF4504-325C-407A-AFFD-40A8B7DA4728}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGenerator.Tests", "MyGenerator.Tests\MyGenerator.Tests.csproj", "{6337B2EA-6070-4F44-AE20-96AF2AB5287F}"
 EndProject
 Global
