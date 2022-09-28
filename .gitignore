@@ -1,0 +1,10 @@
+/.idea/
+/MyGenerator/.idea/
+/MyGenerator/bin/
+/MyGenerator/obj/
+/HelloLib/.idea/
+/HelloLib/bin/
+/HelloLib/obj
+/MyGenerator.Attributes/bin/
+/MyGenerator.Attributes/obj/
+/MyGenerator.Tests/bin/
