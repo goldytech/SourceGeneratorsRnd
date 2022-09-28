@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloLib", "HelloLib\HelloL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGenerator.Tests", "MyGenerator.Tests\MyGenerator.Tests.csproj", "{6337B2EA-6070-4F44-AE20-96AF2AB5287F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorConsumer", "GeneratorConsumer\GeneratorConsumer.csproj", "{16629983-0B28-4839-94E2-591BE4FA6D1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,5 +36,9 @@ Global
 		{6337B2EA-6070-4F44-AE20-96AF2AB5287F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6337B2EA-6070-4F44-AE20-96AF2AB5287F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6337B2EA-6070-4F44-AE20-96AF2AB5287F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16629983-0B28-4839-94E2-591BE4FA6D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16629983-0B28-4839-94E2-591BE4FA6D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16629983-0B28-4839-94E2-591BE4FA6D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16629983-0B28-4839-94E2-591BE4FA6D1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
