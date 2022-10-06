@@ -1,6 +1,4 @@
-using System;
-
-namespace MyGenerator.Attributes;
+namespace MyGenerator;
 
 [AttributeUsage(AttributeTargets.Class)]
 [System.Diagnostics.Conditional("Sample")]

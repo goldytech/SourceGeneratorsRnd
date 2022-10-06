@@ -17,6 +17,7 @@ public static class SourceGenHelper
 //------------------------------------------------------------------------------
 
 #nullable enable";
+
     public const string Attribute = Header + @"
 namespace MyGenerator.Attributes;
 
@@ -32,7 +33,7 @@ namespace MyGenerator.Attributes;
         var accessModifier = typeSymbol.DeclaredAccessibility.ToString().ToLower();
         var namespaceName = typeSymbol.ContainingNamespace.ToDisplayString();
         //var source = Header + $@"
-    
+
         var sb = new StringBuilder();
         sb.AppendLine(Header);
         //var code = classDeclarationSyntax.NormalizeWhitespace().ToFullString();
@@ -43,13 +44,13 @@ namespace MyGenerator.Attributes;
         sb.AppendLine("    {");
         sb.AppendLine("        public string SayHelloWithNameWrapper(string name)");
         sb.AppendLine("        {");
-        sb.AppendLine(              "return new Hello().SayHello(name);" );
+        sb.AppendLine("return new Hello().SayHello(name);");
         sb.AppendLine("        }");
         sb.AppendLine("    }");
-     
+
         return sb.ToString();
     }
-    
+
     // determine the namespace the class/enum/struct is declared in, if any
     static string GetNamespace(BaseTypeDeclarationSyntax syntax)
     {
@@ -65,7 +66,7 @@ namespace MyGenerator.Attributes;
         // Get the containing syntax node for the type declaration
         // (could be a nested type, for example)
         var potentialNamespaceParent = syntax.Parent;
-    
+
         // Keep moving "out" of nested classes etc until we get to a namespace
         // or until we run out of parents
         while (potentialNamespaceParent != null &&
@@ -80,7 +81,7 @@ namespace MyGenerator.Attributes;
         {
             // We have a namespace. Use that as the type
             nameSpace = namespaceParent.Name.ToString();
-        
+
             // Keep moving "out" of the namespace declarations until we 
             // run out of nested namespace declarations
             while (true)
@@ -103,10 +104,11 @@ namespace MyGenerator.Attributes;
     public static string GeneratePartialClass2(ClassDeclarationSyntax classDeclarationSyntax)
     {
         var className = classDeclarationSyntax.Identifier.Text;
-        var accessModifier = classDeclarationSyntax.Modifiers.FirstOrDefault(m => m.IsKind(SyntaxKind.PublicKeyword) || m.IsKind(SyntaxKind.InternalKeyword));
+        var accessModifier = classDeclarationSyntax.Modifiers.FirstOrDefault(m =>
+            m.IsKind(SyntaxKind.PublicKeyword) || m.IsKind(SyntaxKind.InternalKeyword));
         var namespaceName = GetNamespace(classDeclarationSyntax);
         //var source = Header + $@"
-    
+
         var sb = new StringBuilder();
         sb.AppendLine(Header);
         //var code = classDeclarationSyntax.NormalizeWhitespace().ToFullString();
@@ -117,10 +119,28 @@ namespace MyGenerator.Attributes;
         sb.AppendLine("    {");
         sb.AppendLine("        public string SayHelloWithNameWrapper(string name)");
         sb.AppendLine("        {");
-        sb.AppendLine(              "return new Hello().SayHello(name);" );
+        sb.AppendLine("return new Hello().SayHello(name);");
         sb.AppendLine("        }");
         sb.AppendLine("    }");
-     
-        return sb.ToString();       
+
+        return sb.ToString();
+    }
+
+    public static string GenerateDuplicateClass(string className, string namespaceName,
+        ClassDeclarationSyntax? classDeclarationSyntax, string accessModifier)
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine(Header);
+        sb.AppendLine($"namespace {namespaceName};");
+        classDeclarationSyntax = classDeclarationSyntax.RemoveNodes(classDeclarationSyntax.AttributeLists, SyntaxRemoveOptions.KeepNoTrivia);
+        var code = classDeclarationSyntax.NormalizeWhitespace()?.ToFullString();
+        
+        var existingClassName = classDeclarationSyntax.Identifier.Text;
+        code = code.Replace(existingClassName, className);
+        var existingAccessModifier = classDeclarationSyntax.Modifiers.FirstOrDefault(m =>
+            m.IsKind(SyntaxKind.PublicKeyword) || m.IsKind(SyntaxKind.InternalKeyword));
+        code = code.Replace(existingAccessModifier.ToString(), accessModifier);
+        sb.AppendLine(code);
+        return sb.ToString();
     }
 }

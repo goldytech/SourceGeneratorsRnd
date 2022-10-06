@@ -12,9 +12,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HelloLib\HelloLib.csproj" />
-      <ProjectReference Include="..\MyGenerator.Attributes\MyGenerator.Attributes.csproj" ReferenceOutputAssembly="true" />
-      <ProjectReference Include="..\MyGenerator\MyGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-        <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />  
+        <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
+        <ProjectReference Include="..\MyGenerator\MyGenerator.csproj" OutputItemType="Analyzer"  />  
     </ItemGroup>
-
+    <ItemGroup>
+        <None Include="vehicles.csv" CsvLoadType="Startup" CacheObjects="true" />
+    </ItemGroup>
+    <Import Project="..\MyGenerator\CsvGenerator.props" />
 </Project>

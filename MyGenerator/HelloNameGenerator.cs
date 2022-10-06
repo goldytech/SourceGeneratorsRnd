@@ -16,6 +16,7 @@ namespace MyGenerator
         /// <exception cref="NotImplementedException"></exception>
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
+           
             var attributes = context.SyntaxProvider
                 .CreateSyntaxProvider(predicate: PredicateFunc, transform: TransformFunc)
                 .Where(t => t is not null)

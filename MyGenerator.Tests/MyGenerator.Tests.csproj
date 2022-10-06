@@ -29,8 +29,26 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HelloLib\HelloLib.csproj" />
-      <ProjectReference Include="..\MyGenerator.Attributes\MyGenerator.Attributes.csproj" />
       <ProjectReference Include="..\MyGenerator\MyGenerator.csproj" OutputItemType="Analyzer" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Include="TestsOutput\DuplicateExtensionSnapshotTests.CodeGenDuplicate.DotNet6_0.received.cs" />
+      <Compile Include="TestsOutput\DuplicateExtensionSnapshotTests.CodeGenDuplicate.verified.cs" />
+      
+      <Compile Remove="TestsOutput\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="TestsOutput\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="TestsOutput\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="vehicles.csv" CsvLoadType="Startup" CacheObjects="true" />
+    </ItemGroup>
+    <!-- Manually reference the generator props because we locally reference the generator. When added via NuGet this happens automatically -->
+    <Import Project="..\MyGenerator\CsvGenerator.props" />
 </Project>
