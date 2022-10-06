@@ -13,10 +13,12 @@
     <ItemGroup>
       <ProjectReference Include="..\HelloLib\HelloLib.csproj" />
         <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
-        <ProjectReference Include="..\MyGenerator\MyGenerator.csproj" OutputItemType="Analyzer"  />  
+        <ProjectReference Include="..\MyGenerator\MyGenerator.csproj" OutputItemType="Analyzer" />  
     </ItemGroup>
     <ItemGroup>
-        <None Include="vehicles.csv" CsvLoadType="Startup" CacheObjects="true" />
+        <AdditonalFiles Include="vehicles.csv" CsvLoadType="Startup">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </AdditonalFiles>
     </ItemGroup>
     <Import Project="..\MyGenerator\CsvGenerator.props" />
 </Project>
