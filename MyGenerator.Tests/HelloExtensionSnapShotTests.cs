@@ -11,20 +11,22 @@ public class HelloExtensionSnapShotTests
     public Task CodeGen()
     {
         const string source = @"
-using MyGenerator.Attributes;
+using HelloLib;
+using MyGenerator;
+
+
 namespace GeneratorConsumer;
+
 [HelloExtension]
 public partial class HelloFromConsumer
 {
-    public string SayHello()
-    {
-        return new HelloLib.Hello().SayHello();
-    }
-
-   
-
-}";
-        // return Verifier.Verify(source);
+        public string SayHello()
+        {
+            return new Hello().SayHello();
+        }
+}
+";
+        
         return TestHelper.VerifyHelloExtension(source);
     }
 }

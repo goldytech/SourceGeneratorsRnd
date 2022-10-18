@@ -24,23 +24,7 @@ namespace MyGenerator
             
             context.RegisterSourceOutput(attributes,GenerateCode);
 
-
-
-            //         ctx.AddSource("HelloExtensionAttribute.g.cs",
-            //             SourceText.From(SourceGenHelper.Attribute, Encoding.UTF8)));
-            //
-            // var classDeclarationSyntax = context.SyntaxProvider
-            //     .CreateSyntaxProvider(predicate: static (s, _) => IsSyntaxTargetForGeneration(s),
-            //         transform: static (ctx, _) => GetSemanticTargetForGeneration(ctx))
-            //     .Where(static m => m is not null)!;
-            //
-            // IncrementalValueProvider<(Compilation, ImmutableArray<ClassDeclarationSyntax>)> compiledMethods = context
-            //     .CompilationProvider
-            //     .Combine(classDeclarationSyntax.Collect())!;
-            //
-            // context.RegisterSourceOutput(compiledMethods,
-            //     static (spc, source) => Execute(source.Item1, source.Item2, spc));
-            //
+         
             
         }
 
